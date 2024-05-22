@@ -8,5 +8,5 @@ This was a media streaming app using RTP for live audio-/video-conferencing. The
 
 *Even though I have no idea whether the result was or is considered ok by seasoned experts in said areas, I am still super proud of the result. I started from absolute zero, got up to speed with everything and still tried to produce neat solutions along the way.* 
 
-Probably (unfortunately) still to this day my most challenging project (work and pet projects). Seeing a C++ app doing audio and video streaming, processing megabytes of data with a varienty other clients without crashing or memory hogging for hours. Sweet.* Even integrated some existing codecs from ffmpeg into the solution. The app was written in C#.
+Probably (unfortunately) still to this day my most challenging project (work and pet projects). Seeing a C++ app doing audio and video streaming, processing megabytes of data with a varienty other clients without crashing or memory hogging for hours. *Sweet.* Even integrated some existing codecs from ffmpeg into the solution. The app was written in C#.
 
