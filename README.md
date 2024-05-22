@@ -1,4 +1,4 @@
-# Diploma thesis (parts of, ca. 2003) :)
+# Diploma thesis (parts of, middle of the 2000s) :)
 
 I just found (parts of) the code from my diploma thesis from ca. 20 years ago:D
 
