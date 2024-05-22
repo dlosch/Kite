@@ -1,0 +1,675 @@
+import "C:\Microsoft Platform SDK\include\prsht.idl";
+import "C:\Microsoft Platform SDK\include\mshtml.idl";
+import "c:\microsoft platform sdk\include\dimm.idl";
+import "C:\Microsoft Platform SDK\include\mshtmhst.idl";
+import "c:\microsoft platform sdk\include\docobj.idl";
+import "C:\Microsoft Platform SDK\include\exdisp.idl";
+import "C:\Microsoft Platform SDK\include\objsafe.idl";
+
+#line 6 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+struct RtpParsedPacket {
+	BOOL pad;
+	BOOL ext;
+	BOOL marker;
+#line 11 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+	UINT cc;
+#line 13 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+	UINT timestamp;
+#line 15 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+	UINT ssrc;
+#line 18 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+	USHORT seqNum;
+	USHORT cbData;
+#line 22 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+	UINT payloadType;
+#line 24 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
+	BYTE *pData;
+};
+
+#line 156 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpstructs.h"
+struct SdesItems {
+	CHAR cname[255];
+	CHAR name[255];
+	CHAR email[255];
+	CHAR phone[255];
+	CHAR loc[255];
+	CHAR tool[255];
+	CHAR note[255];
+#line 169 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpstructs.h"
+	UINT ssrc;
+};
+
+[
+	object,
+	uuid(53F0C4D4-9926-4F1E-B0FF-47EAF6AA1F5A),
+	helpstring("IVideoPlayoutBuffer Interface"),
+	pointer_default(unique)
+] 
+#line 31 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+interface IPlayoutBuffer : IUnknown {
+#line 33 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	HRESULT  EnqueuePacket([in]struct RtpParsedPacket *pPacket);
+	HRESULT  DequeuePackets([in]struct RtpParsedPacket ***pppRtpParsedPackets  , [in]UINT *pcPackets);
+	HRESULT  ExpireOlderThanOrEqual([in]UINT uTimestamp);
+	HRESULT  ClearBuffer();
+#line 39 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	HRESULT  SetBufferParameter([in]UINT uBufferDurationMilliseconds, [in]UINT uTimestampIncrementPerSecond, [in]UINT uTimePerFrameNanos);
+#line 44 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	HRESULT  SetLatency([in]UINT uLatency);
+#line 46 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	HRESULT  GetLatency([in]UINT *puLatency);
+#line 48 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	HRESULT  SetMuted([in]BOOL bMuted);
+#line 50 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	HRESULT  GetMuted([in]BOOL *pbMuted);
+#line 52 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	[propget,helpstring("property PayloadType")] HRESULT  PayloadType([out,retval] BYTE *pVal);
+	[propput,helpstring("property PayloadType")] HRESULT  PayloadType([in] BYTE newVal);
+#line 55 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	[propget] HRESULT  DueTime([out,retval] UINT *pDueTimeMilliseconds);
+	[propget] HRESULT  EventHandle([out,retval] LONG_PTR **pEventHandle );
+#line 58 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	[propget] HRESULT  BufferDurationMilliseconds([out,retval] UINT *pVal);
+	[propput] HRESULT  BufferDurationMilliseconds([in] UINT newVal);
+#line 61 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	[propget] HRESULT  RtpTimestampIncrementPerSecond([out,retval] UINT *pVal);
+	[propput] HRESULT  RtpTimestampIncrementPerSecond([in] UINT newVal);
+#line 64 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	[propget] HRESULT  TimePerSampleNanos([out,retval] UINT *pVal);
+	[propput] HRESULT  TimePerSampleNanos([in] UINT newVal);
+};
+
+[
+	object,
+	uuid(53F0C4D5-9926-4F1E-B0FF-47EAF6AA1F5A),
+	helpstring("IVideoPlayoutBuffer Interface"),
+	pointer_default(unique)
+] 
+#line 76 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+interface IDisposable : IUnknown {
+#line 78 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\iplayoutbuffer.h"
+	[propget,helpstring("property Disposed")] HRESULT  Disposed([out,retval] BOOL *pVal);
+	[helpstring("method Dispose")] HRESULT  Dispose();
+};
+
+[
+	object,
+	uuid(1ABEA164-797F-4A07-93AD-7DACBE477F48),
+	helpstring("IRtpBufferedListenerFilterEventConsumer Interface"),
+	pointer_default(unique)
+] 
+#line 15 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+interface IRtpBufferedListenerFilterEventConsumer : IUnknown {
+#line 17 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+	[helpstring("method ActiveSourceAdded")] HRESULT  ActiveSourceAdded([in] UINT ssrc);
+	[helpstring("method ActiveSourceRemoved")] HRESULT  ActiveSourceRemoved([in] UINT ssrc);
+#line 20 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+	HRESULT  SourceActiveValueChanged([in] UINT ssrc, [in] INT active);
+	HRESULT  SourceMuteValueChanged([in] UINT ssrc, [in] INT muted);
+#line 24 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+	HRESULT  SourceEvent([in] UINT ssrc, [in] INT eventType);
+	HRESULT  SourceReception([in] UINT ssrc, [in]INT packetsRecvd, [in]INT packetsLost, [in]INT packetsMisordered, [in]INT jitter, [in]INT validityTime);
+	HRESULT  SourceAttributes([in] UINT ssrc, [in]LPWSTR cname, [in]LPWSTR name, [in]LPWSTR email, [in]LPWSTR phone, [in]LPWSTR loc, [in]LPWSTR tool, [in]LPWSTR note);
+};
+
+[
+	object,
+	uuid(1ABEA165-797F-4A07-93AD-7DACBE477F48),
+	helpstring("IRtpBufferedListenerFilterEventConsumerEx Interface"),
+	pointer_default(unique)
+] 
+#line 41 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+interface IRtpBufferedListenerFilterEventConsumerEx : IUnknown {
+};
+
+[
+	object,
+	uuid(1ABEA162-797F-4A07-93AD-7DACBE477F48),
+	helpstring("IRtpListenerEventConsumer Interface"),
+	pointer_default(unique)
+] 
+#line 56 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+interface IRtpListenerEventConsumer : IUnknown {
+#line 58 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+	[helpstring("method ActiveSourceAdded")] HRESULT  ActiveSourceAdded([in] UINT ssrc);
+	[helpstring("method ActiveSourceRemoved")] HRESULT  ActiveSourceRemoved([in] UINT ssrc);
+	[helpstring("method ActiveSourceRemoved")] HRESULT  ActiveSourceChanged([in] UINT ssrc, [in] INT eventType);
+};
+
+[
+	object,
+	uuid(1ABEA163-797F-4A07-93AD-7DACBE477F48),
+	helpstring("IRtpBufferedListenerEventConsumer Interface"),
+	pointer_default(unique)
+] 
+#line 69 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+interface IRtpBufferedListenerEventConsumer : IUnknown {
+};
+
+[
+	object,
+	uuid(2ABEA162-797F-4A07-93AD-7DACBE477F48),
+	helpstring("IRtpRendererEventConsumer Interface"),
+	pointer_default(unique)
+] 
+#line 79 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+interface IRtpRendererEventConsumer : IUnknown {
+#line 81 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistenereventcallbacks.h"
+	[helpstring("method ReceiverReportReceived")] HRESULT  ReceiverReportReceived([in] UINT ssrcReportSource);
+};
+
+[
+	object,
+	uuid(DC2F8E5E-17F2-4921-9804-F1EAFDD20843),
+	helpstring("IRtpReceiverStatistics Interface"),
+	pointer_default(unique)
+] 
+#line 10 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtpstatistics.h"
+interface IRtpReceiverStatistics : IUnknown {
+#line 12 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtpstatistics.h"
+	HRESULT  GetPacketLoss([in]UINT ssrc, [out] DOUBLE *pdblPacketLoss);
+	HRESULT  GetReceptionStatistics([in]UINT ssrc, [out] UINT *pcPacketsReceived, [out] UINT *pcPacketsLost, [out] UINT *pJitter);
+	HRESULT  GetPerformanceCounterPrefix([in]UINT ssrc, [in,out,size_is(cchPerfCounterPrefix)] LPWSTR szPerfCounterPrefix, [in]INT cchPerfCounterPrefix);
+};
+
+[
+	object,
+	uuid(DC2F8E5F-17F2-4921-9804-F1EAFDD20843),
+	helpstring("IRtpSenderStatistics Interface"),
+	pointer_default(unique)
+] 
+#line 23 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtpstatistics.h"
+interface IRtpSenderStatistics : IUnknown {
+#line 26 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtpstatistics.h"
+	HRESULT  GetSenderStatistics([out] UINT *pcPacketsSent, [out] UINT *pcOctetsSent, [out] UINT *pMillisecs);
+#line 28 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtpstatistics.h"
+	HRESULT  GetStatisticsForReceiver([in]UINT ssrcRRSource, [out] BYTE *pFractionLost, [out] UINT *pcCumulativeNumberOfPacketsLost, [out] UINT *pInterarrivalJitter);
+	HRESULT  GetPerformanceCounterPrefix([in]UINT ssrc, [in,out,size_is(cchPerfCounterPrefix)] LPWSTR szPerfCounterPrefix, [in]INT cchPerfCounterPrefix);
+};
+
+#line 8 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+struct SimpleInterfaceInfo {
+#line 12 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+	BSTR bstrInterfaceName;
+#line 18 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+	DWORD dwInterfaceIndex;
+#line 20 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+	DWORD dwMtu;
+#line 22 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+	DWORD dwType;
+};
+
+[
+	object,
+	uuid(011B1D0D-BC47-46E7-9859-8F7016D96543),
+	helpstring("IInternetProtocolHelper Interface"),
+	pointer_default(unique)
+] 
+#line 32 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+interface IInternetProtocolHelper : IUnknown {
+#line 34 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+	[helpstring("method QueryMtuForInterface")] HRESULT  QueryMtuForInterface([in] UINT interfaceIndex, [out,retval] UINT *pMtu);
+	[helpstring("method ")] HRESULT  GetAdapterInfoConcise([in] UINT interfaceIndex, [in,out] struct SimpleInterfaceInfo *pInterfaceInfo);
+	[helpstring("method ")] HRESULT  GetAdapterInfoConciseForAllAdapters([in,out] struct SimpleInterfaceInfo *pInterfaceInfo, [in,out] UINT *pcAdapters);
+	[helpstring("method ")] HRESULT  FindAdapterForAddress([in] BSTR bstrAddress, [out] UINT *pIndex);
+};
+
+#line 9 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpsessionmember.h"
+struct RtpSessionMemberInfo {
+	UINT ssrc;
+#line 12 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpsessionmember.h"
+	UINT payloadType;
+#line 14 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpsessionmember.h"
+	UINT delaySinceLastPacketMillis;
+#line 16 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpsessionmember.h"
+	UINT interarrivalJitter;
+	UINT packetsLost;
+	UINT octetsLost;
+#line 20 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpsessionmember.h"
+	struct SdesItems *pSdesItems;
+};
+
+[
+	object,
+	uuid(C24FF91D-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 7 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpListenerConfiguration : IUnknown {
+#line 9 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SetNetworkParameter([in] LPWSTR szRemoteAddress, [in] USHORT uRemotePort, [in] LPWSTR szLocalInterface, [in] USHORT uLocalPort, [in] INT ttl);
+#line 16 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SetMediaParameterDefaults([in] BOOL bAduSpansMultiplePackets, [in] BYTE payloadType, [in] UINT uRtpTimeStampIncrementPerSecond, [in] UINT uExpectedTimePerAduNanoseconds, [in] BOOL bUpdateExistingBuffers);
+#line 23 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SetRtpBandwidth([in] UINT uSessionBandwidth, [in] BOOL bEnforce);
+#line 27 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  ReserveNetworkAddressAndCreateSockets([in] LPWSTR szRemoteAddress, [in,out] LPWSTR szLocalInterface, [in] USHORT uMinLocalPort, [in] USHORT uMaxLocalPort, [in] INT ttl);
+#line 34 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  ReserveNetworkAddress([in] LPWSTR szRemoteAddress, [in] LPWSTR szLocalInterface, [in] USHORT uMinLocalPort, [in] USHORT uMaxLocalPort, [in,out] LPWSTR szLocalInterfaceOut, [in] INT cchLocal, [out] USHORT *puLocalPort);
+#line 42 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	[propget,helpstring("property LocalSsrc")] HRESULT  LocalSsrc([out,retval] UINT *pVal);
+	[propput,helpstring("property LocalSsrc")] HRESULT  LocalSsrc([in] UINT newVal);
+};
+
+[
+	object,
+	uuid(C24FF91C-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 51 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpListenerConfigurationOut : IUnknown {
+#line 53 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  GetNetworkParameter([in,out] LPWSTR szRemoteAddress, [in]INT cchRemoteAddress, [out] USHORT *puRemotePort, [in,out] LPWSTR szLocalInterface, [in]INT cchLocalAddress, [out] USHORT *puLocalPortBase, [out] INT *pTtl);
+};
+
+[
+	object,
+	uuid(C24FF91E-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 63 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpListenerControl : IUnknown {
+#line 65 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  Start();
+	HRESULT  Stop();
+};
+
+[
+	object,
+	uuid(C24FF920-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 74 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpListenerCallbackRegistration : IUnknown {
+#line 76 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  RegisterCallback([in] IRtpListenerEventConsumer *pEventConsumer);
+};
+
+[
+	object,
+	uuid(C24FF921-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 84 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpBufferedListener : IUnknown {
+#line 86 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SetPlayoutBufferGuid([in] LPGUID playoutBufferGuid);
+#line 88 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SubscribeSsrc([in] UINT ssrc);
+#line 90 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SubscribeSsrcAndGetPointerEx([in]UINT ssrc, [in] LPGUID guidJitterBuffer, [in]BYTE payloadType, [in]UINT uRtpTimeStampIncrementPerSecond, [in]UINT uExpectedTimePerAduNanoseconds, [out] IPlayoutBuffer **ppPlayoutBuffer );
+#line 98 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  UnsubscribeSsrc([in] UINT ssrc);
+#line 100 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  GetSubscribedSourcesCount([in,out] INT *pcSubscribed);
+	HRESULT  GetSubscribedSources([in,out] INT **pSubscribedSources , [in,out] INT *pcSubscribedSources);
+	HRESULT  GetActiveSourcesCount([in,out] INT *pcActive);
+	HRESULT  GetActiveSources([in,out] INT **pActiveSources , [in,out] INT *pcActiveSources);
+#line 106 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SetMuted([in]UINT ssrc, [in]INT bMuted);
+	HRESULT  GetMuted([in]UINT ssrc, [in]INT *pbIsMuted);
+#line 109 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  SetJitterBufferLatency([in]UINT ssrc, [in]UINT uLatency);
+	HRESULT  GetJitterBufferLatency([in]UINT ssrc, [in]UINT *puLatency);
+};
+
+[
+	object,
+	uuid(C24FF922-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 118 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpBufferedListenerData : IUnknown {
+#line 120 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  GetDeliveryUnit([in] UINT ssrc, [in,out] struct RtpParsedPacket ***pppDeliveryUnit  , [in,out] UINT *pcPackets);
+};
+
+[
+	object,
+	uuid(C24FF923-56E8-4bf7-8E4B-4B4409862FBB),
+	pointer_default(unique)
+] 
+#line 128 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+interface IRtpListener : IUnknown {
+#line 130 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtplistenerinterfaces.h"
+	HRESULT  GetRtcpAttributes([in]UINT ssrc, [in,out] struct SdesItems *pSdesItems);
+	HRESULT  GetSessionMemberInfo([in] UINT ssrc, [in,out] struct RtpSessionMemberInfo *pSessionMemberInfo, [in] BOOL bIncludeSdesItems);
+};
+
+#line 6 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtppayloadpacketizer.h"
+struct MyRegPinTypes {
+	GUID clsMajorType;
+	GUID clsMinorType;
+};
+
+[
+	object,
+	uuid(66AA121D-17DD-469B-9D25-C7F7250CDD99),
+	helpstring("IRtpPayloadPacketizer Interface"),
+	pointer_default(unique)
+] 
+#line 17 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtppayloadpacketizer.h"
+interface IRtpPayloadPacketizer : IUnknown {
+#line 20 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtppayloadpacketizer.h"
+	[propget] HRESULT  MaxBufferSize([out,retval] UINT *pcbMtu);
+	[propput] HRESULT  MaxBufferSize([in] UINT cbMtu);
+#line 24 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtppayloadpacketizer.h"
+	[propget] HRESULT  GuidCount([out,retval] UINT *pcGuids);
+	HRESULT  GetGuids([in,out] struct MyRegPinTypes *pRegPinTypes);
+#line 27 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtppayloadpacketizer.h"
+	HRESULT  Packetize([in] BYTE *pBuffer, [in] UINT cbBuffer, [out] BYTE ***ppBuffer  , [out] UINT **ppcbBuffers , [out] UINT *pcBuffers);
+#line 40 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\irtppayloadpacketizer.h"
+	HRESULT  Depacketize([in] BYTE **pBuffers , [in] UINT *pcbBuffers, [in] UINT *pSeqNums, [in] UINT cBuffers, [in,out] BYTE *pBuffer, [in,out] UINT *pcbBuffer, [out] UINT *pcbSkipped);
+};
+
+[
+	object,
+	uuid(DA2B5441-D7AE-45c4-AE59-8620361525DC),
+	pointer_default(unique)
+] 
+#line 22 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+interface IRtpRendererConfiguration : IUnknown {
+#line 24 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SetNetworkParameter([in] LPWSTR szRemoteAddress, [in] USHORT uRemotePort, [in] LPWSTR szLocalInterface, [in] USHORT uLocalPort, [in] INT ttl, [in] LPWSTR szCname);
+#line 33 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  ReserveNetworkAddressAndCreateSockets([in] LPWSTR szRemoteAddress, [in,out] LPWSTR szLocalInterface, [in] USHORT uMinLocalPort, [in] USHORT uMaxLocalPort, [in] INT ttl, [in] LPWSTR cname);
+#line 41 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  ReserveNetworkAddress([in] LPWSTR szRemoteAddress, [in] LPWSTR szLocalInterface, [in] USHORT uMinLocalPort, [in] USHORT uMaxLocalPort, [in,out] LPWSTR szLocalInterfaceOut, [in] INT cchLocal, [out] USHORT *puLocalPort);
+#line 46 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SetPayloadType([in] BYTE payloadType);
+#line 48 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SetRtpBandwidth([in]UINT uSessionBandwidth, [in]BOOL bEnforce);
+#line 50 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SetRtcpParameter([in] LPWSTR szName, [in] LPWSTR szEMail, [in] LPWSTR szPhone, [in] LPWSTR szLoc, [in] LPWSTR szTool, [in] LPWSTR szNote);
+#line 54 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	[propget,helpstring("property LocalSsrc")] HRESULT  LocalSsrc([out,retval] UINT *pVal);
+	[propput,helpstring("property LocalSsrc")] HRESULT  LocalSsrc([in] UINT newVal);
+};
+
+[
+	object,
+	uuid(DA2B5442-D7AE-45c4-AE59-8620361525DC),
+	pointer_default(unique)
+] 
+#line 63 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+interface IRtpRendererConfigurationOut : IUnknown {
+#line 65 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	[helpstring("")] HRESULT  GetNetworkParameter([in,out] LPWSTR szRemoteAddress, [in] INT cchRemoteAddress, [out] USHORT *puRemotePort, [in,out] LPWSTR szLocalInterface, [in] INT cchLocalAddress, [out] USHORT *puLocalPortBase, [out] INT *pTtl);
+};
+
+[
+	object,
+	uuid(DA2B5443-D7AE-45c4-AE59-8620361525DC),
+	pointer_default(unique)
+] 
+#line 76 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+interface IRtpRendererControl : IUnknown {
+#line 78 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	[helpstring("method Start")] HRESULT  Start();
+	[helpstring("method Stop")] HRESULT  Stop();
+};
+
+[
+	object,
+	uuid(23AAF37A-90F4-48E9-B816-9EEAFE4912A8),
+	helpstring("IRtpRenderer Interface"),
+	pointer_default(unique)
+] 
+#line 89 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+interface IRtpRenderer : IUnknown {
+#line 97 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SendRtpPacket([in] BYTE *pBuffer, [in] UINT cbBuffer, [in] BOOL bMarker, [in] UINT timestamp);
+#line 99 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SendRtpPayloadData([in]BOOL bMarker, [in]UINT timestamp, [in]BYTE *pProperlyPacketizedData, [in]UINT cbProperlyPacketizedData);
+};
+
+[
+	object,
+	uuid(DA2B5440-D7AE-45c4-AE59-8620361525DC),
+	pointer_default(unique)
+] 
+#line 110 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+interface IRtpRendererFilterConfiguration_Export : IUnknown {
+#line 112 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	HRESULT  SetRtpRenderer([in] IRtpRenderer *pRenderer);
+	HRESULT  SetProtocolMediaParameter([in] UINT avgTimePerFrame, [in] UINT rtpTsIncPerFrame);
+	HRESULT  SetRtpPayloadPacketizer([in] IRtpPayloadPacketizer *pPacketizer);
+};
+
+#line 18 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+typedef struct _AMMediaType {
+#line 9 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	GUID majortype;
+	GUID subtype;
+	BOOL bFixedSizeSamples;
+	BOOL bTemporalCompression;
+	ULONG lSampleSize;
+	GUID formattype;
+	IUnknown *pUnk;
+	ULONG cbFormat;
+	BYTE *pbFormat;
+} AM_MEDIA_TYPE;
+
+[
+	object,
+	uuid(D32EA7FB-59D2-4a6b-ACCF-E70A323004A3),
+	pointer_default(unique)
+] 
+#line 71 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+interface IRtpListenerOutputPin_Export : IUnknown {
+#line 73 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  GetBufferPrefix([in]INT *pcbPrefix);
+};
+
+[
+	object,
+	uuid(D32EA7F5-59D2-4a6b-ACCF-E70A323004A3),
+	pointer_default(unique)
+] 
+#line 81 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+interface IRtpBufferedListenerFilter_Export : IUnknown {
+#line 83 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetNetworkParameter([in]LPWSTR szRemoteAddress, [in]USHORT uRemotePort, [in]LPWSTR szLocalInterface, [in]USHORT uLocalInterface, [in]INT ttl);
+#line 109 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetMediaParameterDefaults([in] BOOL bAduSpansMultiplePackets, [in]BYTE payloadType, [in]UINT uRtpTimeStampIncrementPerSecond, [in]UINT uExpectedTimePerAduNanoseconds);
+#line 118 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetOutputMediaType([in]AM_MEDIA_TYPE *pMediaType);
+#line 121 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetRtpBandwidth([in]UINT uSessionBandwidth, [in]BOOL bEnforce);
+#line 123 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetJitterBufferParameter([in]UINT ssrc, [in]UINT uLatency);
+#line 127 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SelectActiveSourceForOutputPin([in]UINT index, [in]UINT ssrc);
+	HRESULT  AddOutputPin([in]INT *pIndex);
+	HRESULT  AddOutputPinForActiveSource([in]UINT ssrc, [in]INT *pIndex);
+	HRESULT  RemoveOutputPin([in]UINT index);
+#line 132 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  RegisterEventHandler([in]IRtpBufferedListenerFilterEventConsumer *pEventConsumer);
+	HRESULT  RegisterEventHandlerEx([in]IRtpBufferedListenerFilterEventConsumerEx *pEventConsumerEx);
+#line 135 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  GetSubscribedSourcesCount([in]INT *pcSubscribed);
+	HRESULT  GetSubscribedSources([in]INT **pSubscribedSources , [in]INT *pcSubscribedSources);
+	HRESULT  GetActiveSourcesCount([in]INT *pcActive);
+	HRESULT  GetActiveSources([in]INT **pActiveSources , [in]INT *pcActiveSources);
+#line 140 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetAutoSubscribeActiveSources([in]BOOL bValue);
+	HRESULT  GetAutoSubscribeActiveSources([in]BOOL *pbValue);
+#line 147 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetRtpPayloadPacketizer([in]IRtpPayloadPacketizer *pPacketizer);
+#line 154 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  ReserveNetworkAddress([in]LPWSTR szRemoteAddress, [in]LPWSTR szLocalAddress, [in]USHORT uLocalMinPort, [in]USHORT uLocalMaxPort, [in]LPWSTR szLocalOut, [in]INT cchLocal, [in]USHORT *puLocal);
+#line 162 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  GetNetworkParameter([in]LPWSTR szRemoteAddress, [in]INT cchRemoteAddress, [in]USHORT *puRemotePort, [in]LPWSTR szLocalInterface, [in]INT cchLocalAddress, [in]USHORT *puLocalPortBase, [in]INT *pTtl);
+#line 167 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetJitterBufferLatency([in]UINT ssrc, [in]UINT uLatency);
+	HRESULT  GetJitterBufferLatency([in]UINT ssrc, [in]UINT *puLatency);
+#line 170 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  GetRtcpAttributes([in]UINT ssrc, [in]struct SdesItems *pSdesItems);
+	HRESULT  SetMuted([in]UINT ssrc, [in]INT bMuted);
+	HRESULT  GetMuted([in]UINT ssrc, [in]INT *pbIsMuted);
+#line 175 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetPinCount([in]INT pinCount);
+	HRESULT  GetPinCount([in]INT *pPinCount);
+	HRESULT  GetPinIndexForSource([in]UINT ssrc, [in]INT *pIndex);
+};
+
+[
+	object,
+	uuid(D32EA7E5-59D2-4A6B-ACCF-E70A323004A3),
+	pointer_default(unique)
+] 
+#line 188 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+interface IRtpBufferedListenerFilterSingleOutputPin_Export : IUnknown {
+#line 190 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  Configure([in]UINT ssrc, [in]IRtpBufferedListener *pRtpBufferedListener, [in]IPlayoutBuffer *pPlayoutBuffer, [in]IRtpPayloadPacketizer *pPacketizer, [in]LPGUID lpGuidMajorType, [in]LPGUID lpGuidMinorType);
+#line 200 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetOutputMediaType([in]AM_MEDIA_TYPE *pMediaType);
+#line 207 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\filterinterfaces.h"
+	HRESULT  SetJitterBufferParameter([in]UINT uLatency);
+	HRESULT  GetSubscribedSsrc([in]UINT *pSsrc);
+};
+
+[
+	object,
+	uuid(7507A94E-B7EB-4974-A0C4-CFBFA5A74874),
+	helpstring("ITestRtpJitterBuffer Interface"),
+	pointer_default(unique)
+] 
+#line 16 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\testrtpjitterbuffer.h"
+interface ITestRtpJitterBuffer : IUnknown {
+#line 18 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\testrtpjitterbuffer.h"
+	HRESULT  Test();
+	HRESULT  TestAudioBuffer();
+};
+
+
+[ version(1.0), uuid(2AE479B3-C267-4BD3-B09B-E1850606EACC), helpstring("Kite.Rtp.Atl 1.0 Type Library") ]
+library KiteRtpAtl
+{
+	importlib("stdole2.tlb");
+	importlib("olepro32.dll");
+
+	[
+		aggregatable,
+		version(1.0),
+		uuid(9CC3E35B-B934-4CA8-A392-F4F702F88A32),
+		helpstring("AudioPlayoutBuffer Class")
+	] 
+#line 19 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\audioplayoutbuffer.h"
+	coclass CAudioPlayoutBuffer {
+		interface IPlayoutBuffer;
+		interface IDisposable;
+	};
+
+	[
+		aggregatable,
+		version(1.0),
+		uuid(E493FD51-97B1-4126-829E-24F63A7FD50D),
+		helpstring("VideoPlayoutBuffer Class")
+	] 
+#line 19 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\videoplayoutbuffer.h"
+	coclass CVideoPlayoutBuffer {
+		interface IPlayoutBuffer;
+		interface IDisposable;
+	};
+
+	[
+		aggregatable,
+		version(1.0),
+		uuid(A1A6FBF9-1273-4A9D-98CF-D8B8DD3384B1),
+		helpstring("InternetProtocolHelper Class")
+	] 
+#line 53 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\internetprotocolhelper.h"
+	coclass CInternetProtocolHelper {
+		interface IInternetProtocolHelper;
+	};
+
+	[
+		uuid(23815B72-D00C-40EF-B373-FD8D4DBAD698),
+		helpstring("_IRtpListenerEvents Interface")
+	] 
+#line 63 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistener.h"
+	dispinterface _IRtpListenerEvents {
+	properties:
+
+	methods:
+	};
+
+	[
+		version(1.0),
+		uuid(D9A26C6D-69CB-4E73-A37E-6C3681194C32),
+		helpstring("RtpListener Class"),
+		noncreatable
+	] 
+#line 82 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtplistener.h"
+	coclass CRtpListener {
+		interface IRtpListener;
+		[default, source]	interface _IRtpListenerEvents;
+	};
+
+	[
+		version(1.0),
+		uuid(D9A26C6E-69CB-4E73-A37E-6C3681194C32),
+		helpstring("RtpBufferedListener Class")
+	] 
+#line 23 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpbufferedlistener.h"
+	coclass CRtpBufferedListener {
+		interface IRtpListenerConfiguration;
+		interface IRtpListenerConfigurationOut;
+		interface IRtpListenerControl;
+		interface IRtpListenerCallbackRegistration;
+		interface IRtpBufferedListener;
+		interface IRtpBufferedListenerData;
+		interface IRtpListener;
+		[default, source]	interface IRtpListenerEventConsumer;
+	};
+
+	[
+		aggregatable,
+		version(1.0),
+		uuid(7A6BE560-2C33-4426-BF2B-17B0DCCFF523),
+		helpstring("RtpRenderer Class")
+	] 
+#line 133 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtprenderer.h"
+	coclass CRtpRenderer {
+		interface IRtpRenderer;
+		interface IRtpRendererControl;
+		interface IRtpRendererConfiguration;
+		interface IRtpRendererConfigurationOut;
+		interface IRtpSenderStatistics;
+		[default, source]	interface IRtpRendererEventConsumer;
+	};
+
+	[
+		aggregatable,
+		version(1.0),
+		uuid(07136823-BDF2-4A41-B965-CCE9E450F41F),
+		helpstring("Test Class"),
+		hidden,
+		noncreatable
+	] 
+#line 30 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\test.h"
+	coclass CTest {
+		interface IRtpBufferedListenerFilterEventConsumerEx;
+		interface IRtpBufferedListenerFilterEventConsumer;
+		[default]	interface IRtpBufferedListenerEventConsumer;
+		interface IRtpPayloadPacketizer;
+		interface IRtpBufferedListenerFilter_Export;
+		interface IRtpListenerOutputPin_Export;
+		interface IRtpBufferedListenerFilterSingleOutputPin_Export;
+		interface IRtpRendererFilterConfiguration_Export;
+	};
+
+	[
+		aggregatable,
+		version(1.0),
+		uuid(4DBA237A-C934-4521-A021-846256D11FC7),
+		helpstring("TestRtpJitterBuffer Class")
+	] 
+#line 37 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\testrtpjitterbuffer.h"
+	coclass CTestRtpJitterBuffer {
+		interface ITestRtpJitterBuffer;
+	};
+
+}
+

@@ -1,0 +1,89 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kite.Rtp.Atl", "Kite.Rtp.Atl.vcproj", "{B37CFB83-CE02-4E8D-A114-C0C452991F1B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kite.Rtp.AtlPS", "Kite.Rtp.AtlPS.vcproj", "{7471A93E-1436-4991-BF37-477FA67F3F11}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B} = {B37CFB83-CE02-4E8D-A114-C0C452991F1B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestApp", "TestApp\TestApp.vcproj", "{DB6ED691-0248-42BB-9594-5EF7467535BC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kite.Rtp.Atl.Filter", "..\Kite.Rtp.Atl.Filter\Kite.Rtp.Atl.Filter.vcproj", "{8F07661B-6A5E-427C-AE38-C73C26B585AF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetTestApp", "..\DotnetTestApp\DotnetTestApp.csproj", "{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = Kite.Rtp.Atl.vcproj
+		SccProjectName0 = \u0022$/Diplom/Kite/Kite.Rtp.Atl/Kite.Rtp.Atl\u0022,\u0020VFBAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = false
+		SccProjectUniqueName1 = TestApp\\TestApp.vcproj
+		SccProjectName1 = \u0022$/Diplom/Kite/Kite.Rtp.Atl/Kite.Rtp.Atl/TestApp\u0022,\u0020WFBAAAAA
+		SccLocalPath1 = TestApp
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = false
+		SccProjectUniqueName2 = ..\\Kite.Rtp.Atl.Filter\\Kite.Rtp.Atl.Filter.vcproj
+		SccProjectName2 = \u0022$/Diplom/Kite/Kite.Rtp.Atl/Kite.Rtp.Atl.Filter\u0022,\u0020NGBAAAAA
+		SccLocalPath2 = ..\\Kite.Rtp.Atl.Filter
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug_lib = Debug_lib
+		Release = Release
+		RELEASE_EXPIRATION = RELEASE_EXPIRATION
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.Debug.ActiveCfg = Debug|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.Debug.Build.0 = Debug|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.Debug_lib.ActiveCfg = Debug_lib|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.Debug_lib.Build.0 = Debug_lib|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.Release.ActiveCfg = Release|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.Release.Build.0 = Release|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.RELEASE_EXPIRATION.ActiveCfg = RELEASE_EXPIRATION|Win32
+		{B37CFB83-CE02-4E8D-A114-C0C452991F1B}.RELEASE_EXPIRATION.Build.0 = RELEASE_EXPIRATION|Win32
+		{7471A93E-1436-4991-BF37-477FA67F3F11}.Debug.ActiveCfg = Debug|Win32
+		{7471A93E-1436-4991-BF37-477FA67F3F11}.Debug_lib.ActiveCfg = Debug_lib|Win32
+		{7471A93E-1436-4991-BF37-477FA67F3F11}.Release.ActiveCfg = Release|Win32
+		{7471A93E-1436-4991-BF37-477FA67F3F11}.RELEASE_EXPIRATION.ActiveCfg = RELEASE_EXPIRATION|Win32
+		{DB6ED691-0248-42BB-9594-5EF7467535BC}.Debug.ActiveCfg = Debug|Win32
+		{DB6ED691-0248-42BB-9594-5EF7467535BC}.Debug_lib.ActiveCfg = Debug_lib|Win32
+		{DB6ED691-0248-42BB-9594-5EF7467535BC}.Debug_lib.Build.0 = Debug_lib|Win32
+		{DB6ED691-0248-42BB-9594-5EF7467535BC}.Release.ActiveCfg = Release|Win32
+		{DB6ED691-0248-42BB-9594-5EF7467535BC}.RELEASE_EXPIRATION.ActiveCfg = RELEASE_EXPIRATION|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.Debug.ActiveCfg = Debug|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.Debug.Build.0 = Debug|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.Debug_lib.ActiveCfg = Debug|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.Debug_lib.Build.0 = Debug|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.Release.ActiveCfg = Release|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.Release.Build.0 = Release|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.RELEASE_EXPIRATION.ActiveCfg = RELEASE_EXPIRATION|Win32
+		{8F07661B-6A5E-427C-AE38-C73C26B585AF}.RELEASE_EXPIRATION.Build.0 = RELEASE_EXPIRATION|Win32
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.Debug.ActiveCfg = Debug|.NET
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.Debug.Build.0 = Debug|.NET
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.Debug_lib.ActiveCfg = Debug|.NET
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.Debug_lib.Build.0 = Debug|.NET
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.Release.ActiveCfg = Release|.NET
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.Release.Build.0 = Release|.NET
+		{E056F2A2-FA4C-428F-B09A-3AFAC6300C47}.RELEASE_EXPIRATION.ActiveCfg = RELEASE_EXPIRATION|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		Kite.Rtp.Atl.vsd = Kite.Rtp.Atl.vsd
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
