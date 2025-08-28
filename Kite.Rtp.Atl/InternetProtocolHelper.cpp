@@ -120,7 +120,8 @@ STDMETHODIMP CInternetProtocolHelper::GetAdapterInfoConcise(UINT interfaceIndex,
 				break;
 			}
 			
-		} while(pCurrentAdapter = pCurrentAdapter->Next); 
+			pCurrentAdapter = pCurrentAdapter->Next;
+		} while(pCurrentAdapter); 
 	}
 
 	SAFE_FREE(pAdapterInfos);
@@ -172,7 +173,8 @@ STDMETHODIMP CInternetProtocolHelper::GetAdapterInfoConciseForAllAdapters(Simple
 			// pInterfaceInfo[index].dwMtu = 0;
 			pInterfaceInfo[index].dwInterfaceIndex = pCurrentAdapter->Index;
 
-		} while(pCurrentAdapter = pCurrentAdapter->Next); 
+			pCurrentAdapter = pCurrentAdapter->Next;
+		} while(pCurrentAdapter); 
 	}
 
 	SAFE_FREE(pAdapterInfos);
@@ -218,9 +220,11 @@ STDMETHODIMP CInternetProtocolHelper::FindAdapterForAddress(BSTR bstrAddress, UI
 						
 						goto cleanup;
 					}
-				} while(pCurrent = pCurrentAdapter->IpAddressList.Next);
+					pCurrent = pCurrent->Next;
+				} while(pCurrent);
 			}
-		} while(pCurrentAdapter = pCurrentAdapter->Next); 
+			pCurrentAdapter = pCurrentAdapter->Next;
+		} while(pCurrentAdapter); 
 	}
 
 cleanup:

@@ -173,7 +173,7 @@ HRESULT CRtpSessionMember::Update(RtpParsedPacket *pPacket)
 
 	if (m_uHighestReceivedSeqNum < pPacket->seqNum || bSeqNumOverflow)
 	{
-		m_uHighestReceivedSeqNum++;
+		m_uHighestReceivedSeqNum = pPacket->seqNum;
 		
 		LONGLONG lExtendedHighestSeqNum = (m_uSeqNumCycleCount << 16 | m_uHighestReceivedSeqNum);
 		m_pPerfCounterExtendedHighestSequenceNumberReceived->put_RawValue(lExtendedHighestSeqNum);

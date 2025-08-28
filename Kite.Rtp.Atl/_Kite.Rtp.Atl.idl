@@ -1,10 +1,7 @@
-import "C:\Microsoft Platform SDK\include\prsht.idl";
-import "C:\Microsoft Platform SDK\include\mshtml.idl";
-import "c:\microsoft platform sdk\include\dimm.idl";
-import "C:\Microsoft Platform SDK\include\mshtmhst.idl";
-import "c:\microsoft platform sdk\include\docobj.idl";
-import "C:\Microsoft Platform SDK\include\exdisp.idl";
-import "C:\Microsoft Platform SDK\include\objsafe.idl";
+// Modern IDL imports - using standard Windows SDK paths
+import "oaidl.idl";
+import "ocidl.idl";
+import "objsafe.idl";
 
 #line 6 "d:\\development\\diplom\\source\\kite\\kite.rtp.atl\\kite.rtp.atl\\rtpidlexports.h"
 struct RtpParsedPacket {
