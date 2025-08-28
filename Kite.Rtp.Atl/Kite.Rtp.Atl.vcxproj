@@ -100,7 +100,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;_ATL_ATTRIBUTES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>rtpidlexports.h</ModuleDefinitionFile>
+      <ModuleDefinitionFile>Kite.Rtp.Atl.def</ModuleDefinitionFile>
       <MergedIDLBaseFileName>_Kite.Rtp.Atl.idl</MergedIDLBaseFileName>
       <TypeLibraryFile>$(ProjectName).tlb</TypeLibraryFile>
       <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -136,7 +136,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;_ATL_ATTRIBUTES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -145,7 +145,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>rtpidlexports.h</ModuleDefinitionFile>
+      <ModuleDefinitionFile>Kite.Rtp.Atl.def</ModuleDefinitionFile>
       <MergedIDLBaseFileName>_Kite.Rtp.Atl.idl</MergedIDLBaseFileName>
       <TypeLibraryFile>$(ProjectName).tlb</TypeLibraryFile>
       <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -174,7 +174,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;_ATL_ATTRIBUTES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -185,7 +185,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>rtpidlexports.h</ModuleDefinitionFile>
+      <ModuleDefinitionFile>Kite.Rtp.Atl.def</ModuleDefinitionFile>
       <MergedIDLBaseFileName>_Kite.Rtp.Atl.idl</MergedIDLBaseFileName>
       <TypeLibraryFile>$(ProjectName).tlb</TypeLibraryFile>
       <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_USRDLL;_ATL_ATTRIBUTES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -225,7 +225,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>rtpidlexports.h</ModuleDefinitionFile>
+      <ModuleDefinitionFile>Kite.Rtp.Atl.def</ModuleDefinitionFile>
       <MergedIDLBaseFileName>_Kite.Rtp.Atl.idl</MergedIDLBaseFileName>
       <TypeLibraryFile>$(ProjectName).tlb</TypeLibraryFile>
       <AdditionalDependencies>winmm.lib;ws2_32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -296,7 +296,7 @@
     <ClCompile Include="FilterInterfaces.cpp" />
     <ClCompile Include="InternetProtocolHelper.cpp" />
     <ClCompile Include="InternetProtocolHelperFunctions.cpp" />
-    <ClCompile Include="Kite.Rtp.Atl.cpp" />
+    <ClCompile Include="Kite.Rtp.Atl_modern.cpp" />
     <ClCompile Include="RegistryHelper.cpp" />
     <ClCompile Include="RtpBufferedListener.cpp" />
     <ClCompile Include="RtpConfigurationHelper.cpp" />
@@ -348,6 +348,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kite.Rtp.Atl.rgs" />
+    <None Include="Kite.Rtp.Atl.def" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

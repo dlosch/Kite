@@ -161,7 +161,7 @@
     <ClCompile Include="InternetProtocolHelperFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Kite.Rtp.Atl.cpp">
+    <ClCompile Include="Kite.Rtp.Atl_modern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RegistryHelper.cpp">
@@ -247,6 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kite.Rtp.Atl.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Kite.Rtp.Atl.def">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ReadMe.txt" />

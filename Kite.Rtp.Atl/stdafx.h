@@ -57,7 +57,9 @@ using namespace ATL;
 #include "WinsockHelper.h"
 
 // .net perfmon-wrapper
-#import "..\\..\\Kite.Rtp.PerformanceCounter\\Kite.Rtp.PerfMon.tlb" no_namespace /*raw_interfaces_only*/
+// TODO: This import was commented out because the referenced .tlb file does not exist
+// Uncomment and ensure the path is correct when the PerformanceCounter component is available
+// #import "..\\..\\Kite.Rtp.PerformanceCounter\\Kite.Rtp.PerfMon.tlb" no_namespace /*raw_interfaces_only*/
 #include "RtpListenerEventCallbacks.h"
 
 #include "DebugHelpers.h"
